@@ -1,21 +1,18 @@
 import java.io.File;
-import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 
 public class Main {
 
     public static void main(String[] args) {
-        String folderPath = "/home/pristavkovlad/Java";
-        File file = new File(folderPath);
-        FolderSizeCalculator calculator = new FolderSizeCalculator(file);
+        ParametersBag bag = new ParametersBag(args);
+        Node root = new Node(new File(bag.getPath()), bag.getLimit());
+        FolderSizeCalculator calculator = new FolderSizeCalculator(root);
         ForkJoinPool pool = new ForkJoinPool();
-        System.out.println(pool.invoke(calculator));
-      //  System.out.println(file.length());
-        //Arrays.stream(file.listFiles()).forEach(System.out :: println);
-     //   System.out.println(getFolderSize(file));
+        pool.invoke(calculator);
+        System.out.println(root);
     }
 
-    public static long getFolderSize(File folder){
+   /* public static long getFolderSize(File folder){
         if (folder.isFile()){
             return folder.length();
         }
@@ -25,5 +22,5 @@ public class Main {
             sum += getFolderSize(file);
         }
         return sum;
-    }
+    }*/
 }
