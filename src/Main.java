@@ -11,16 +11,4 @@ public class Main {
         pool.invoke(calculator);
         System.out.println(root);
     }
-
-   /* public static long getFolderSize(File folder){
-        if (folder.isFile()){
-            return folder.length();
-        }
-        long sum = 0;
-        File[] files = folder.listFiles();
-        for (File file : files) {
-            sum += getFolderSize(file);
-        }
-        return sum;
-    }*/
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.concurrent.RecursiveTask;
 
 public class FolderSizeCalculator extends RecursiveTask<Long> {
-    private Node node;
+    private final Node node;
 
     public FolderSizeCalculator(Node node){
         this.node = node;
